@@ -7,4 +7,4 @@ class Deudores(models.Model):
     fecha = models.DateTimeField()
     deuda_inicial_pesos = models.FloatField()
     deuda_inicial_dolares = models.FloatField()
-    
+
