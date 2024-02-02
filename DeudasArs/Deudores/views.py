@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def mostrar_deudores(request):
+    return render(request, "deudores.html")
