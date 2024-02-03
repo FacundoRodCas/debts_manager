@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import dolaroficial
+from .views import dolarblue
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', dolaroficial),
+    path('home/', dolarblue),
     path('', include('Deudores.urls'))
 ]
