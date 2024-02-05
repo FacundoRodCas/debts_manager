@@ -6,5 +6,12 @@
 </head>
 <body>
 Sus deudores:
+<form>
+    <ul>
+        {% for d in deudores %}
+        <li>{{d.nombre}} &nbsp; {{d.apellido}} &nbsp; {{d.deuda_inicial_pesos}} &nbsp; {{d.deuda_inicial_dolares}} &nbsp; {{d.deuda_actualizada_pesos}}</li>
+        {% endfor %}
+    </ul>
+</form>
 </body>
 </html>
