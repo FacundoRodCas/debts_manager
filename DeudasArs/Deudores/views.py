@@ -7,7 +7,7 @@ def mostrar_deudores(request):
     deudores = Deudores.objects.filter()
     return render(request, "deudores.html", {'deudores': deudores})
 
-def crear_usuario(request):
+def crear_deuda(request):
     if request.method == 'POST':
         form = FormularioDeudores(request.POST)
         deuda_inicial_dolares = float(request.POST['deuda_inicial_pesos']) / dolar_blue
