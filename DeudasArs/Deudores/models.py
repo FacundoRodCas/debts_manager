@@ -1,10 +1,10 @@
 from django.db import models
-
+import datetime
 
 class Deudores(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
-    fecha = models.DateTimeField()
+    fecha = models.DateTimeField(auto_now_add=True)
     deuda_inicial_pesos = models.FloatField()
     deuda_inicial_dolares = models.FloatField()
     deuda_actualizada_pesos = models.FloatField()

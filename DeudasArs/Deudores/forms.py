@@ -1,11 +1,9 @@
 from django import forms
+from django.forms import ModelForm
+from .models import Deudores
 
 
-class FormuarioDeudores(forms.Form):
-    nombre = forms.CharField()
-    apellido = forms.CharField()
-    fecha = forms.DateTimeField()
-    deuda_inicial_pesos = forms.FloatField()
-    deuda_inicial_dolares = forms.FloatField()
-    deuda_actualizada_pesos = forms.FloatField()
-    
+class FormularioDeudores(ModelForm):
+    class Meta:
+        model = Deudores
+        fields = ['nombre', 'apellido', 'deuda_inicial_pesos']
