@@ -11,10 +11,12 @@ def crear_deuda(request):
     if request.method == 'POST':
         form = FormularioDeudores(request.POST)
         deuda_inicial_dolares = float(request.POST['deuda_inicial_pesos']) / dolar_blue
+        #usuario = request.POST['usuario']
         if form.is_valid():
             deudor = form.save(commit=False)
+            #deudor.usuario = usuario
             deudor.deuda_inicial_dolares = deuda_inicial_dolares
-            deudor.deuda_actualizada_pesos = deuda_inicial_dolares * dolar_blue
+            deudor.deuda_actualizada_pesos = float(deuda_inicial_dolares * dolar_blue)
             form.save()
             return redirect('deudores:')
         else:
