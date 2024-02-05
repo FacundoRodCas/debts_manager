@@ -8,3 +8,6 @@ class Deudores(models.Model):
     deuda_inicial_pesos = models.FloatField()
     deuda_inicial_dolares = models.FloatField()
     deuda_actualizada_pesos = models.FloatField()
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
