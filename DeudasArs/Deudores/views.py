@@ -4,8 +4,13 @@ from .forms import FormularioDeudores
 from .dolarjson import dolar_blue
 
 def mostrar_deudores(request):
-    deudores = Deudores.objects.filter()
-    return render(request, "deudores.html", {'deudores': deudores})
+    if request.method == 'GET':
+        deudores = Deudores.objects.filter()
+        deudas_actualizadas = []
+        for deudor in deudores:
+            deuda_actualizada = deudor.deuda_inicial_dolares * dolar_blue
+            deudas_actualizadas.append(deuda_actualizada)
+        return render(request, "deudores.html", {'deudores': deudores, 'deudas_actualizadas': deudas_actualizadas})
 
 def crear_deuda(request):
     if request.method == 'POST':
@@ -15,8 +20,7 @@ def crear_deuda(request):
         if form.is_valid():
             deudor = form.save(commit=False)
             #deudor.usuario = usuario
-            deudor.deuda_inicial_dolares = deuda_inicial_dolares
-            deudor.deuda_actualizada_pesos = float(deuda_inicial_dolares * dolar_blue)
+            deudor.deuda_inicial_dolares = deuda_inicial_dolares * dolar_blue
             form.save()
             return redirect('deudores:')
         else:

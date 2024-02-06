@@ -7,7 +7,6 @@ class Deudores(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     deuda_inicial_pesos = models.FloatField()
     deuda_inicial_dolares = models.FloatField()
-    deuda_actualizada_pesos = models.FloatField()
     #usuario = models.ForeignKey()
     def __str__(self):
         return f"{self.nombre} {self.apellido}"

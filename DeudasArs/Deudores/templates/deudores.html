@@ -3,15 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    { % load staticfiles %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/deudores.css" %}'/>
 </head>
 <body>
 Sus deudores:
-<form>
-    <ul>
-        {% for d in deudores %}
-        <li>{{d.nombre}} &nbsp; {{d.apellido}} &nbsp; {{d.deuda_inicial_pesos}} &nbsp; {{d.deuda_inicial_dolares}} &nbsp; {{d.deuda_actualizada_pesos}}</li>
-        {% endfor %}
-    </ul>
-</form>
+<div class = "contenedor">
+    <div class="primer formulario">
+    <form>
+        <ul>
+            {% for d in deudores %}
+            <li>{{d.nombre}} {{d.apellido}} &nbsp;&nbsp; {{d.deuda_inicial_pesos}} &nbsp; {{d.deuda_inicial_dolares}} </li>
+            {% endfor %}
+        </ul>
+    </form>
+    </div>
+    <div class="segundo formulario">
+    <form>
+        <ul>
+            {% for d in deudas_actualizadas %}
+            <li>Deuda actualizada: {{d}}</li>
+            {% endfor %}
+        </ul>
+    </form>
+    </div>
+</div>
 </body>
 </html>
