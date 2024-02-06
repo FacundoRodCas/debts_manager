@@ -28,3 +28,19 @@ def crear_deuda(request):
     else:
         form = FormularioDeudores()
         return render(request, "crearusuario.html", {'form': form})
+
+def modificar_deuda(request, pk):
+    deuda = Deudores.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = FormularioDeudores(request.POST, instance=deuda)
+        if form.is_valid():
+            form.save()
+            return redirect('deudores:')
+    else:
+        form = FormularioDeudores(instance=deuda)
+    return render(request, "modificar.html", {'form': form})
+
+def eliminar_deuda(request, pk):
+    deuda = Deuda.objects.get(pk=pk)
+    deuda.delete()
+    return redirect('deudores:')
