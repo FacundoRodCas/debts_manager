@@ -9,7 +9,6 @@ def mostrar_deudores(request):
         deudas_actualizadas = []
         for deudor in deudores:
             deuda_actualizada = deudor.deuda_inicial_dolares * dolar_blue
-            deuda_actualizada = round(deuda_actualizada, 2)
             deudas_actualizadas.append(deuda_actualizada)
         return render(request, "deudores.html", {'deudores': deudores, 'deudas_actualizadas': deudas_actualizadas})
 
