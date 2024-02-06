@@ -41,6 +41,6 @@ def modificar_deuda(request, pk):
     return render(request, "modificar.html", {'form': form})
 
 def eliminar_deuda(request, pk):
-    deuda = Deuda.objects.get(pk=pk)
+    deuda = Deudores.objects.get(pk=pk)
     deuda.delete()
     return redirect('deudores:')

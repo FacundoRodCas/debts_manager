@@ -13,7 +13,10 @@
     <form>
 
             {% for d in deudores %}
-            Deudor: {{d.nombre}} {{d.apellido}} &nbsp;&nbsp; Deuda inicial: {{d.deuda_inicial_pesos}} &nbsp; Deuda inicial en dolares : {{d.deuda_inicial_dolares}} &nbsp;Fecha {{d.fecha}} <br></br>
+            Deudor: {{d.nombre}} {{d.apellido}} &nbsp;&nbsp; Deuda inicial: {{d.deuda_inicial_pesos}} &nbsp; Deuda inicial en dolares : {{d.deuda_inicial_dolares}} &nbsp;Fecha {{d.fecha}}
+            <a href= "{% url 'deudores:modificar' d.pk %}" class="btn btn-success">Modificar</a>
+            <a href= "{% url 'deudores:eliminar' d.pk %}" class="btn btn-success">Eliminiar</a>
+        <br></br>
             {% endfor %}
 
     </form>
@@ -22,7 +25,7 @@
     <form>
 
             {% for d in deudas_actualizadas %}
-            Deuda actualizada: {{d}} <br></br>
+            &nbsp; Deuda actualizada: {{d}} <br></br>
             {% endfor %}
 
     </form>
