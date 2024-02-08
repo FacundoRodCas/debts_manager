@@ -2,14 +2,18 @@ from django.shortcuts import render, redirect
 from .models import Deudores
 from .forms import FormularioDeudores
 from .dolarjson import dolar_blue
-
+from datetime import date
 
 def mostrar_deudores(request):
     if request.method == 'GET':
         deudores = Deudores.objects.filter()
         deudas_actualizadas = []
+        today = date.today()
         for deudor in deudores:
-            deuda_actualizada = deudor.deuda_inicial_dolares * dolar_blue
+            meses = ((today.year - deudor.fecha.year) * 12) + (today.month - deudor.fecha.month)
+            interes = (deudor.deuda_inicial_dolares / 100) * deudor.intereses_mensuales
+            intereses_totales = interes * meses
+            deuda_actualizada = (deudor.deuda_inicial_dolares + intereses_totales) * dolar_blue
             deudas_actualizadas.append(deuda_actualizada)
         deudas = zip(deudores, deudas_actualizadas)
         return render(request, "deudores.html", {'deudas': deudas})
@@ -24,6 +28,7 @@ def crear_deuda(request):
             deudor = form.save(commit=False)
             #deudor.usuario = usuario
             deudor.deuda_inicial_dolares = deuda_inicial_pesos / dolar_blue
+            deudor.fecha = date.today()
             form.save()
             return redirect('deudores:')
         else:
