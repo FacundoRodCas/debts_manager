@@ -10,7 +10,8 @@ def mostrar_deudores(request):
         for deudor in deudores:
             deuda_actualizada = deudor.deuda_inicial_dolares * dolar_blue
             deudas_actualizadas.append(deuda_actualizada)
-        return render(request, "deudores.html", {'deudores': deudores, 'deudas_actualizadas': deudas_actualizadas})
+        deudas = zip(deudores, deudas_actualizadas)
+        return render(request, "deudores.html", {'deudas': deudas})
 
 def crear_deuda(request):
     if request.method == 'POST':

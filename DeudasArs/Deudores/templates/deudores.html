@@ -11,23 +11,14 @@
 <div class = "contenedor">
     <div class="primer formulario">
     <form>
-
-            {% for d in deudores %}
-            Deudor: {{d.nombre}} {{d.apellido}} &nbsp;&nbsp; Deuda inicial: {{d.deuda_inicial_pesos}} &nbsp; Deuda inicial en dolares : {{d.deuda_inicial_dolares}} &nbsp;Fecha {{d.fecha}}
+        <ol>
+            {% for d, de in deudas %}
+            <li>Deudor: {{d.nombre}} {{d.apellido}} &nbsp;&nbsp; Deuda inicial: {{d.deuda_inicial_pesos}} &nbsp; Deuda inicial en dolares : {{d.deuda_inicial_dolares}} &nbsp;Fecha {{d.fecha}} &nbsp; Deuda actualizada: {{de}}</li>
             <a href= "{% url 'deudores:modificar' d.pk %}" class="btn btn-success">Modificar</a>
             <a href= "{% url 'deudores:eliminar' d.pk %}" class="btn btn-success">Eliminiar</a>
-        <br></br>
+            <br><br>
             {% endfor %}
-
-    </form>
-    </div>
-    <div class="segundo formulario">
-    <form>
-
-            {% for d in deudas_actualizadas %}
-            &nbsp; Deuda actualizada: {{d}} <br></br>
-            {% endfor %}
-
+        </ol>
     </form>
     </div>
 </div>
