@@ -35,7 +35,7 @@ def crear_deuda(request):
             return redirect('deudores:')
     else:
         form = FormularioDeudores()
-        return render(request, "crearusuario.html", {'form': form})
+        return render(request, "crear.html", {'form': form})
 
 
 def modificar_deuda(request, pk):
