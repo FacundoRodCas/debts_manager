@@ -20,6 +20,6 @@ from .views import dolarblue
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', dolarblue),
+    path('home/', dolarblue, name='home'),
     path('', include('Deudores.urls'))
 ]
