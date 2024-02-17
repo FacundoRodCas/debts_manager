@@ -7,16 +7,17 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            usuario = authenticate(rquest,
+            usuario = authenticate(request,
                                    usuario=cd['usuario'],
                                    password=cd['password'])
             if usuario is not None:
                 if usuario.is_active:
                     login(request, usuario)
-                    return render(request, 'usuario autenticado')
+                    return render(request, 'home.html')
                 else:
-                    return render(request, 'usuario inactivo')
+                    return render(request, 'home.html')
             else:
-                return render(request, "información incorrecta")
-        else:
-            return render(request, "login.html", {'form': form})
+                return render(request, "home.html")
+    else:
+        form = LoginForm()
+        return render(request, "login.html", {'form': form})
