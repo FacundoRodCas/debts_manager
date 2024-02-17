@@ -19,4 +19,4 @@ def user_login(request):
             else:
                 return render(request, "información incorrecta")
         else:
-            return render(request, "home.html", {'form': form})
+            return render(request, "login.html", {'form': form})
