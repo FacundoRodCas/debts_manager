@@ -41,7 +41,7 @@ def registro(request):
                 user_form.cleaned_data['password1']
             )
             nuevo_usuario.save()
-            return render(request, 'cuenta/registrado.html', {'nuevo_usuario': nuevo_usuario})
+            return render(request, 'home.html', {'nuevo_usuario': nuevo_usuario})
     else:
         user_form = RegistrationForm()
         return render(request, 'cuenta/registro.html', {'user_form': user_form})
