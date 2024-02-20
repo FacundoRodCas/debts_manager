@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm
+from .forms import LoginForm, RegistrationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 
@@ -31,3 +31,17 @@ def user_logout(request):
 def dashboard(request):
     return render(request,
                   'cuenta/dashboard.html')
+
+def registro(request):
+    if request.method == 'POST':
+        user_form = RegistrationForm(request.POST)
+        if user_form.is_valid():
+            nuevo_usuario = user_form.save(commit=False)
+            nuevo_usuario.setpassword(
+                user_form.cleaned_data['password1']
+            )
+            nuevo_usuario.save()
+            return render(request, 'cuenta/registrado.html', {'nuevo_usuario': nuevo_usuario})
+    else:
+        user_form = RegistrationForm()
+        return render(request, 'cuenta/registro.html', {'user_form': user_form})

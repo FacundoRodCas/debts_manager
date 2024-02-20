@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+        {% for field in user_form %}
+            {{field.label_tag}} {{field}}
+        {% endfor %}
+        {% csrf_token %}
+    <input type="submit" value="Registrarse" class="btn btn success">
+</form>
+</body>
+</html>
