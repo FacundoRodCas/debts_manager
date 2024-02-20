@@ -24,13 +24,16 @@ def user_login(request):
         form = LoginForm()
         return render(request, "login.html", {'form': form})
 
+
 def user_logout(request):
     return render(request, 'logout.html')
+
 
 @login_required
 def dashboard(request):
     return render(request,
                   'cuenta/dashboard.html')
+
 
 def registro(request):
     if request.method == 'POST':
@@ -38,10 +41,10 @@ def registro(request):
         if user_form.is_valid():
             nuevo_usuario = user_form.save(commit=False)
             nuevo_usuario.setpassword(
-                    user_form.cleaned_data['password']
+                    nuevo_usuario.cleaned_data['password']
             )
             nuevo_usuario.save()
-            return render(request, 'home.html', {'nuevo_usuario': nuevo_usuario})
+            return render(request, 'registrado.html', {'nuevo_usuario': nuevo_usuario})
     else:
         user_form = RegistrationForm()
         return render(request, 'registro.html', {'user_form': user_form})

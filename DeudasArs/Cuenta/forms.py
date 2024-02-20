@@ -4,14 +4,15 @@ from django.contrib.auth.models import User
 
 class LoginForm(forms.Form):
     usuario = forms.CharField()
-    password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput)
 
-class RegistrationForm(forms.Form):
-    usuario = forms.CharField(max_length=20)
-    password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
-    email = forms.EmailField()
+
+class RegistrationForm(forms.ModelForm):
+    username = forms.CharField(max_length=20, label="Nombre de usuario")
+    firstname = forms.CharField(max_length=20, label="Nombre")
+    password1 = forms.CharField(widget=forms.PasswordInput, label="Contraseña")
+    password2 = forms.CharField(widget=forms.PasswordInput, label="Repite la contraseña")
+    email = forms.EmailField(label="Email")
 
     class Meta:
         model = User
