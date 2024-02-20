@@ -38,10 +38,10 @@ def registro(request):
         if user_form.is_valid():
             nuevo_usuario = user_form.save(commit=False)
             nuevo_usuario.setpassword(
-                user_form.cleaned_data['password1']
+                    user_form.cleaned_data['password']
             )
             nuevo_usuario.save()
             return render(request, 'home.html', {'nuevo_usuario': nuevo_usuario})
     else:
         user_form = RegistrationForm()
-        return render(request, 'cuenta/registro.html', {'user_form': user_form})
+        return render(request, 'registro.html', {'user_form': user_form})

@@ -9,15 +9,16 @@ class LoginForm(forms.Form):
 
 class RegistrationForm(forms.Form):
     usuario = forms.CharField(max_length=20)
-    password = forms.CharField(widget=forms.PasswordInput)
+    password1 = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput)
     email = forms.EmailField()
 
     class Meta:
         model = User
         fields = ['username', 'firstname', 'email']
 
-    def clean_password(self):
+    def clean_password2(self):
         cd = self.cleaned_data
-        if cd['password1'] == cd['password2']:
-            return forms.ValidationError['Las contraseñas no coinciden']
-        return cd['password 2']
+        if cd['password1'] != cd['password2']:
+            return forms.ValidationError('Las contraseñas no coinciden')
+        return cd['password2']
