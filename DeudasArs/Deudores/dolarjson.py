@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from urllib.request import urlopen, Request
 import json
 
@@ -8,5 +7,4 @@ cuerpo_respuesta = urlopen(req).read()
 
 json_respuesta = json.loads(cuerpo_respuesta.decode('utf-8'))
 dolar_blue = float(json_respuesta['blue']['value_avg'])
-=======
->>>>>>> Cuenta
+
