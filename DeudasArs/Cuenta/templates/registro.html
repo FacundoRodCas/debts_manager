@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+<body>
+<h1>REGISTRO</h1>
+{% if forms.error %}
+Error
+{% else %}
+Usa esto para acreditarte
+{% endif %}
+<form method="post">
+        {% for field in user_form %}
+            {{field.label_tag}} {{field}}
+        {% endfor %}
+        {% csrf_token %}
+    <input type="submit" value="Registrarse" class="btn btn success">
+</form>
+</body>
+</html>

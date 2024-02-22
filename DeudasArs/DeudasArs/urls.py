@@ -16,10 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from .views import dolarblue
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', dolarblue, name='home'),
     path('', include('Deudores.urls'))
+=======
+# from DeudasArs.views import dolarblue
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # path('home/', dolarblue),
+    path('cuenta/', include('Cuenta.urls')),
+>>>>>>> Cuenta
 ]
